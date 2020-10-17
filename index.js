@@ -1,7 +1,12 @@
-var http = require('http');
+//importing node framework
+var express = require("express");
 
-//create a server object:
-http.createServer(function (req, res) {
-  res.write('Hello World!'); //write a response to the client
-  res.end(); //end the response
-}).listen(8080); //the server object listens on port 8080
+var app = express();
+//Respond with "hello world" for requests that hit our root "/"
+app.get("/", function (req, res) {
+  res.send("hello world");
+});
+//listen to port 3000 by default
+app.listen(process.env.PORT || 3000);
+
+module.exports = app;
